@@ -15,3 +15,19 @@ end
 Então /^eu deveria ver "(.*?)"$/ do |resultado|
   page.should have_content(resultado)
 end
+
+
+Dado /^que os seguintes carros existem:$/ do |tabela|
+  tabela.hashes.each do |atributos|
+  	Carro.create atributos
+  	sleep 1
+  end
+end
+
+Quando /^eu clico em "(.*?)"$/ do |link|
+  click_link(link)
+end
+
+Então /^eu não deveria ver "(.*?)"$/ do |resultado|
+    page.should_not have_content(resultado)
+end

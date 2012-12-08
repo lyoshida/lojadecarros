@@ -8,6 +8,7 @@
 			<small><%= carro.preco %></small>
 		</div>
 		<% end %>
+		<%= will_paginate @carros, :next_label => 'Próximo >', :previous_label => '< Anterior' %>
 
 	<%else%>
 		<h2>Nenhum carro cadastrado.</h2>

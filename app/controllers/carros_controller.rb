@@ -3,7 +3,7 @@ class CarrosController < ApplicationController
   
   def index
   	@carro = Carro.new
-  	@carros = Carro.all
+  	@carros = Carro.order(:created_at).paginate(:page => params[:page], :per_page => 4)
   end
 
   def create
