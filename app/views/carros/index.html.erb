@@ -1,0 +1,41 @@
+<div id="lista">
+	<h1>Carros a venda</h1>
+	<% if @carros.any? %>
+		<%for carro in @carros %>
+		<div class="carro">
+			<h2><%= carro.modelo %></h2>
+			<p><%= carro.descricao %></p>
+			<small><%= carro.preco %></small>
+		</div>
+		<% end %>
+
+	<%else%>
+		<h2>Nenhum carro cadastrado.</h2>
+	<%end%>
+</div>
+
+
+<div id="form">
+	<h3>Quer vender?</h3>
+
+	<%= form_for @carro, :url => {:action => 'create'} do |f| %>
+		<p>
+			<%= f.label :modelo %>
+			<%= f.text_field :modelo %>
+		</p>
+
+		<p>
+			<%= f.label :descricao, 'Descrição' %>
+			<%= f.text_area :descricao %>
+		</p>
+
+		<p>
+			<%= f.label :preco, 'Preço' %>
+			<%= f.text_field :preco, :class => 'button-input' %>
+		</p>
+
+		<p class="actions">
+			<%= f.submit "Anunciar!", :disable_with => '...', :class => 'anunciar' %>
+		</p>
+	<% end %>
+</div>
